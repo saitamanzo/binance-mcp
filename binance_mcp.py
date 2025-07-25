@@ -2,9 +2,12 @@ from typing import Any
 
 import requests
 from mcp.server.fastmcp import FastMCP
+import os
 
 # mcp = FastMCP("Binance MCP", port=8897)
-mcp = FastMCP("Binance MCP", port=8897, host="0.0.0.0")
+# mcp = FastMCP("Binance MCP", port=8897, host="0.0.0.0")
+port = int(os.environ.get("PORT", 8897))
+mcp = FastMCP("Binance MCP", port=port, host="0.0.0.0")
 
 def get_symbol_from_name(name: str) -> str:
     if name.lower() in ["bitcoin", "btc"]:
